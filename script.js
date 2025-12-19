@@ -86,24 +86,21 @@ function initFloatingParticles() {
     const container = document.getElementById('floating');
     if (!container) return;
     
-    const colors = ['#ff6b9d', '#c77dff', '#ffd700', '#7b68ee'];
+    const colors = ['#ff69b4', '#ffb6c1', '#ff8dc7', '#ffc0cb'];
     
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 12; i++) {
         const particle = document.createElement('div');
         particle.className = 'floating-particle';
         
         const x = Math.random() * 100;
         const y = Math.random() * 100;
-        const size = Math.random() * 6 + 4;
         const duration = Math.random() * 5 + 5;
         const delay = Math.random() * 5;
         const color = colors[Math.floor(Math.random() * colors.length)];
         
         particle.style.left = `${x}%`;
         particle.style.top = `${y}%`;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.background = color;
+        particle.style.color = color;
         particle.style.animationDuration = `${duration}s`;
         particle.style.animationDelay = `${delay}s`;
         
