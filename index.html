@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>澪 - Club Luna | 六本木</title>
+    <meta name="description" content="六本木 Club Luna 澪のプロフィールページ。お気軽にご連絡ください💫">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="澪 - Club Luna">
+    <meta property="og:description" content="六本木 Club Luna 澪のプロフィールページ">
+    <meta property="og:image" content="mio-hero.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- パーティクル背景 -->
+    <div id="particles-bg"></div>
+    
+    <!-- ヒーローセクション -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="mio-hero.jpg" alt="澪" class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="sparkle-container" id="sparkles"></div>
+            <div class="floating-particles" id="floating"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-moon"></i>
+                <span>Club Luna</span>
+            </div>
+            <h1 class="hero-name">
+                <span class="name-jp">澪</span>
+                <span class="name-en">Mio</span>
+            </h1>
+            <p class="hero-location">
+                <i class="fas fa-map-marker-alt"></i>
+                六本木
+            </p>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アバターセクション -->
+    <section class="avatar-section" id="avatar">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Profile</span>
+                <h2 class="section-title">はじめまして✨</h2>
+            </div>
+            <div class="avatar-card">
+                <div class="avatar-glow"></div>
+                <p class="intro-text">
+                    Club Lunaの澪です💫<br>
+                    月夜のように穏やかに、<br>
+                    あなたの特別な時間を彩ります🌙
+                </p>
+                <button class="avatar-btn" id="avatarBtn">
+                    <span class="btn-sparkle"></span>
+                    <i class="fas fa-user-circle"></i>
+                    澪のアバターを見る
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- フォトギャラリー -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">Photo Gallery</h2>
+            </div>
+            <div class="swiper gallery-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="slide-1.jpg" alt="Gallery 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="slide-2.jpg" alt="Gallery 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="slide-3.jpg" alt="Gallery 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="slide-4.jpg" alt="Gallery 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="slide-5.jpg" alt="Gallery 5">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagramセクション -->
+    <section class="instagram-section" id="instagram">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Instagram</span>
+                <h2 class="section-title">Latest Posts</h2>
+            </div>
+            <div class="instagram-feed">
+                <!-- Instagram埋め込みプレースホルダー -->
+                <div class="instagram-placeholder">
+                    <i class="fab fa-instagram"></i>
+                    <p>Instagramの投稿がここに表示されます</p>
+                    <a href="https://www.instagram.com/mio_clubluna_example/" target="_blank" class="instagram-link">
+                        <i class="fab fa-instagram"></i>
+                        @mio_clubluna
+                    </a>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/mio_clubluna_example/" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i>
+                Instagramをフォロー
+            </a>
+        </div>
+    </section>
+
+    <!-- ブログセクション（Notion埋め込み） -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Blog</span>
+                <h2 class="section-title">澪の日記</h2>
+            </div>
+            <div class="blog-embed">
+                <!-- Notion埋め込みエリア -->
+                <div class="notion-placeholder">
+                    <i class="fas fa-book-open"></i>
+                    <p>Notionブログがここに表示されます</p>
+                    <small>
+                        Notion公開ページのURLを設定してください<br>
+                        例: https://notion.site/your-page-id
+                    </small>
+                </div>
+                <!-- 実際のNotion埋め込み（URLを設定後にコメント解除）
+                <iframe 
+                    src="YOUR_NOTION_PAGE_URL_HERE" 
+                    style="width:100%; height:500px; border:none;"
+                    allowfullscreen>
+                </iframe>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Connect with Me</h2>
+                <p class="cta-text">お気軽にご連絡ください💫</p>
+                
+                <div class="cta-buttons">
+                    <!-- 連絡先保存ボタン -->
+                    <button class="cta-btn cta-save" id="saveContactBtn">
+                        <span class="btn-glow"></span>
+                        <i class="fas fa-bookmark"></i>
+                        保存してね💕
+                    </button>
+                    
+                    <!-- LINE登録ボタン -->
+                    <a href="https://line.me/ti/p/demo-mio" target="_blank" class="cta-btn cta-line">
+                        <span class="btn-glow"></span>
+                        <i class="fab fa-line"></i>
+                        LINEで話そ！
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-moon"></i>
+                <span>Club Luna</span>
+            </div>
+            <p class="footer-text">澪 | 六本木</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/mio_clubluna_example/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://line.me/ti/p/demo-mio" target="_blank">
+                    <i class="fab fa-line"></i>
+                </a>
+            </div>
+            <p class="footer-copy">&copy; 2024 Mio - Club Luna</p>
+        </div>
+    </footer>
+
+    <!-- アバターモーダル -->
+    <div class="modal" id="avatarModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content avatar-modal-content">
+            <button class="modal-close" id="avatarModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="avatar-modal-image">
+                <img src="mio-avatar.jpg" alt="澪のアバター">
+            </div>
+            <div class="avatar-modal-info">
+                <h3>澪 / Mio</h3>
+                <p>Club Luna - 六本木</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ブックマーク案内モーダル -->
+    <div class="modal" id="bookmarkModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content bookmark-modal-content">
+            <button class="modal-close" id="bookmarkModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="bookmark-guide">
+                <h3>
+                    <i class="fas fa-bookmark"></i>
+                    このページを保存する方法
+                </h3>
+                
+                <!-- iPhone向け -->
+                <div class="guide-section">
+                    <div class="guide-header">
+                        <i class="fab fa-apple"></i>
+                        <span>iPhone / Safari</span>
+                    </div>
+                    <ol class="guide-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            画面下の<i class="fas fa-share-from-square"></i>（共有）をタップ
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            「ホーム画面に追加」を選択
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            右上の「追加」をタップ
+                        </li>
+                    </ol>
+                </div>
+                
+                <!-- Android向け -->
+                <div class="guide-section">
+                    <div class="guide-header">
+                        <i class="fab fa-android"></i>
+                        <span>Android / Chrome</span>
+                    </div>
+                    <ol class="guide-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            右上の<i class="fas fa-ellipsis-vertical"></i>（メニュー）をタップ
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            「ホーム画面に追加」を選択
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            「追加」をタップ
+                        </li>
+                    </ol>
+                </div>
+                
+                <p class="guide-note">
+                    <i class="fas fa-heart"></i>
+                    ホーム画面からいつでもアクセスできます💕
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

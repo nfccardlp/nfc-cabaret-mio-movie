@@ -1,0 +1,19 @@
+{
+  "name": "nfc-cabaret-mio",
+  "version": "1.0.0",
+  "description": "Club Luna - Mio NFC Landing Page / 六本木キャバクラ嬢の名刺サイト",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "nfc",
+    "landing-page",
+    "business-card",
+    "hostess",
+    "cabaret"
+  ],
+  "author": "Club Luna",
+  "license": "MIT"
+}
