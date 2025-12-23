@@ -346,19 +346,28 @@ body {
    ======================================== */
 .hero {
     position: relative;
-    min-height: 100vh;
+    padding: 30px 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow: hidden;
-    background: linear-gradient(180deg, #fff5f8 0%, #ffe8f0 50%, #e8d4ff 100%);
+    overflow: visible;
+    background: linear-gradient(180deg, 
+        #ffe8f4 0%, 
+        #ffd4ea 30%, 
+        #e8d4ff 60%, 
+        #d4e8ff 100%);
 }
 
 .hero-bg {
     position: relative;
     width: 100%;
-    max-width: 100%;
+    max-width: 400px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(212, 184, 255, 0.4),
+        0 0 0 3px rgba(255, 255, 255, 0.8);
     z-index: 1;
 }
 
@@ -387,11 +396,12 @@ body {
     background: linear-gradient(
         to bottom,
         rgba(255, 232, 244, 0) 0%,
-        rgba(255, 232, 244, 0) 50%,
-        rgba(255, 212, 234, 0.4) 75%,
-        rgba(232, 212, 255, 0.9) 100%
+        rgba(255, 232, 244, 0) 60%,
+        rgba(255, 212, 234, 0.2) 80%,
+        rgba(232, 212, 255, 0.5) 100%
     );
     pointer-events: none;
+    border-radius: 25px;
 }
 
 /* シャボン玉キラキラ効果 🫧✨ */
@@ -491,21 +501,27 @@ body {
     right: 0;
     z-index: 10;
     text-align: center;
-    padding: 40px 20px 30px;
+    padding: 30px 20px 25px;
     width: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 232, 244, 0) 0%,
+        rgba(232, 212, 255, 0.95) 100%
+    );
+    border-radius: 0 0 25px 25px;
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 10px 24px;
+    padding: 8px 20px;
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--pink-main);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     box-shadow: var(--shadow-soft);
     animation: fade-in-up 1s ease-out;
 }
@@ -521,7 +537,7 @@ body {
 .name-jp {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+    font-size: 3.2rem;
     font-weight: 600;
     color: var(--pink-deep);
     text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
@@ -530,11 +546,11 @@ body {
 .name-en {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 0.3em;
     color: var(--pink-main);
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 .hero-location {
@@ -553,13 +569,7 @@ body {
 }
 
 .hero-scroll {
-    position: relative;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    animation: fade-in-up 1s ease-out 0.6s backwards;
+    display: none;
 }
 
 .hero-scroll span {
