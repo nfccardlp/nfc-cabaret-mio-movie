@@ -6,6 +6,7 @@
 
 /* ========================================
    オープニングアニメーション
+   A3: ボケ光 + B6: マスクreveal
    ======================================== */
 #opening-screen {
     position: fixed;
@@ -13,13 +14,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ffe8f0 0%, #ffd6e5 30%, #ffb8d0 60%, #ff9ec4 100%);
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe8f0 50%, #ffd6e5 100%);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 1s ease, visibility 1s ease;
 }
 
 #opening-screen.fade-out {
@@ -33,157 +34,145 @@
     z-index: 2;
 }
 
-.opening-sparkles,
-.opening-petals {
+/* ボケ光（Bokeh）コンテナ */
+.opening-bokeh {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
+    overflow: hidden;
 }
 
-.opening-sparkle {
+.bokeh-circle {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #ffd700;
     border-radius: 50%;
-    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffec8b;
-    animation: opening-twinkle 2s ease-in-out infinite;
+    animation: bokeh-float ease-in-out infinite;
+    filter: blur(1px);
 }
 
-@keyframes opening-twinkle {
+@keyframes bokeh-float {
     0%, 100% {
-        opacity: 0;
-        transform: scale(0) rotate(0deg);
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.4;
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+        opacity: 0.7;
     }
     50% {
-        opacity: 1;
-        transform: scale(1) rotate(180deg);
+        transform: translateY(-10px) translateX(-15px) scale(0.95);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translateY(-25px) translateX(5px) scale(1.05);
+        opacity: 0.6;
     }
 }
 
-.opening-petal {
-    position: absolute;
-    top: -50px;
-    font-size: 24px;
-    animation: petal-fall linear infinite;
-    opacity: 0.8;
-}
-
-@keyframes petal-fall {
-    0% {
-        transform: translateY(-50px) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
+/* 名前のマスクreveal */
 .opening-logo {
-    animation: opening-appear 1.5s ease-out forwards;
-    opacity: 0;
-    transform: scale(0.5);
+    position: relative;
 }
 
-@keyframes opening-appear {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) translateY(30px);
-    }
-    60% {
-        opacity: 1;
-        transform: scale(1.1) translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.opening-heart {
-    display: block;
-    font-size: 3rem;
-    color: #ff69b4;
-    animation: heart-pulse 1s ease-in-out infinite;
-    margin-bottom: 10px;
-}
-
-@keyframes heart-pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
+.opening-name-container {
+    position: relative;
+    overflow: hidden;
 }
 
 .opening-name {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 5rem;
+    font-size: 5.5rem;
     font-weight: 600;
     color: #ff1493;
     text-shadow: 
-        0 0 20px rgba(255, 105, 180, 0.5),
-        0 0 40px rgba(255, 105, 180, 0.3),
-        2px 2px 4px rgba(255, 105, 180, 0.3);
-    animation: name-glow 2s ease-in-out infinite alternate;
+        0 0 30px rgba(255, 105, 180, 0.4),
+        0 0 60px rgba(255, 105, 180, 0.2);
+    opacity: 0;
+    animation: name-reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
 
-@keyframes name-glow {
+@keyframes name-reveal {
     0% {
-        text-shadow: 
-            0 0 20px rgba(255, 105, 180, 0.5),
-            0 0 40px rgba(255, 105, 180, 0.3);
+        opacity: 0;
+        clip-path: circle(0% at 50% 50%);
     }
     100% {
-        text-shadow: 
-            0 0 30px rgba(255, 105, 180, 0.8),
-            0 0 60px rgba(255, 105, 180, 0.5),
-            0 0 80px rgba(255, 105, 180, 0.3);
+        opacity: 1;
+        clip-path: circle(100% at 50% 50%);
     }
 }
 
 .opening-subtitle {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.5em;
+    font-size: 1.6rem;
+    letter-spacing: 0.6em;
     color: #ff69b4;
-    margin-top: 10px;
-    animation: subtitle-fade 1s ease-out 0.5s forwards;
+    margin-top: 15px;
     opacity: 0;
+    animation: subtitle-slide 0.8s ease-out 1.2s forwards;
 }
 
-@keyframes subtitle-fade {
-    to {
+@keyframes subtitle-slide {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+        letter-spacing: 1em;
+    }
+    100% {
         opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.6em;
     }
 }
 
-.opening-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: #ff8dc7;
-    letter-spacing: 0.2em;
-    margin-top: 30px;
-    animation: text-fade 1s ease-out 1s forwards;
-    opacity: 0;
+/* 名前周りのキラキラ装飾 */
+.opening-sparkle-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
-@keyframes text-fade {
+.ring-sparkle {
+    position: absolute;
+    font-size: 14px;
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffec8b;
+    opacity: 0;
+    animation: ring-sparkle-appear 2s ease-in-out infinite;
+}
+
+@keyframes ring-sparkle-appear {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* 下部の光るライン */
+.opening-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff69b4, #ffd700, #ff69b4, transparent);
+    margin: 25px auto 0;
+    animation: line-expand 0.8s ease-out 1.5s forwards;
+    border-radius: 2px;
+}
+
+@keyframes line-expand {
     to {
-        opacity: 0.8;
+        width: 120px;
     }
 }
 

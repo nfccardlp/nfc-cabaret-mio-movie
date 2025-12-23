@@ -10,37 +10,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* ========================================
    オープニングアニメーション
+   A3: ボケ光 + B6: マスクreveal
    ======================================== */
 function initOpeningAnimation() {
     const openingScreen = document.getElementById('opening-screen');
     if (!openingScreen) return;
     
-    // オープニング用のスパークルを生成
-    const sparklesContainer = openingScreen.querySelector('.opening-sparkles');
-    for (let i = 0; i < 30; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'opening-sparkle';
-        sparkle.style.left = `${Math.random() * 100}%`;
-        sparkle.style.top = `${Math.random() * 100}%`;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
-        sparkle.style.animationDuration = `${1.5 + Math.random()}s`;
-        sparklesContainer.appendChild(sparkle);
+    // ボケ光（Bokeh）を生成
+    const bokehContainer = openingScreen.querySelector('.opening-bokeh');
+    if (bokehContainer) {
+        createBokehLights(bokehContainer);
     }
     
-    // オープニング用の花びらを生成
-    const petalsContainer = openingScreen.querySelector('.opening-petals');
-    const petalSymbols = ['🌸', '💮', '🏵️', '✿'];
-    for (let i = 0; i < 15; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'opening-petal';
-        petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
-        petal.style.left = `${Math.random() * 100}%`;
-        petal.style.animationDelay = `${Math.random() * 2}s`;
-        petal.style.animationDuration = `${3 + Math.random() * 2}s`;
-        petalsContainer.appendChild(petal);
+    // 名前周りのキラキラ装飾を生成
+    const sparkleRing = openingScreen.querySelector('.opening-sparkle-ring');
+    if (sparkleRing) {
+        createSparkleRing(sparkleRing);
     }
     
-    // 3秒後にオープニングをフェードアウト
+    // 3.5秒後にオープニングをフェードアウト
     setTimeout(() => {
         openingScreen.classList.add('fade-out');
         
@@ -48,11 +36,101 @@ function initOpeningAnimation() {
         setTimeout(() => {
             openingScreen.remove();
             document.body.style.overflow = '';
-        }, 800);
-    }, 3000);
+        }, 1000);
+    }, 3500);
     
     // オープニング中はスクロール無効
     document.body.style.overflow = 'hidden';
+}
+
+/* ボケ光（Bokeh）エフェクト生成 */
+function createBokehLights(container) {
+    const colors = [
+        'rgba(255, 182, 193, 0.6)',  // ライトピンク
+        'rgba(255, 105, 180, 0.5)',  // ホットピンク
+        'rgba(255, 192, 203, 0.5)',  // ピンク
+        'rgba(255, 215, 0, 0.4)',    // ゴールド
+        'rgba(255, 228, 225, 0.6)',  // ミスティローズ
+        'rgba(255, 240, 245, 0.7)',  // ラベンダーブラッシュ
+        'rgba(255, 160, 200, 0.5)',  // ミディアムピンク
+    ];
+    
+    // 大きなボケ光（背景用）
+    for (let i = 0; i < 15; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'bokeh-circle';
+        
+        const size = 80 + Math.random() * 200;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const duration = 4 + Math.random() * 4;
+        const delay = Math.random() * 3;
+        
+        circle.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}%;
+            top: ${y}%;
+            background: radial-gradient(circle, ${color} 0%, transparent 70%);
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+        `;
+        
+        container.appendChild(circle);
+    }
+    
+    // 小さなキラキラ光
+    for (let i = 0; i < 25; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'bokeh-circle';
+        
+        const size = 10 + Math.random() * 30;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const duration = 2 + Math.random() * 3;
+        const delay = Math.random() * 2;
+        
+        sparkle.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}%;
+            top: ${y}%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 215, 0, 0.4) 40%, transparent 70%);
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+            filter: blur(0.5px);
+        `;
+        
+        container.appendChild(sparkle);
+    }
+}
+
+/* 名前周りのキラキラリング */
+function createSparkleRing(container) {
+    const sparkleSymbols = ['✦', '✧', '·', '✵'];
+    const radius = 120;
+    const count = 8;
+    
+    for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'ring-sparkle';
+        sparkle.textContent = sparkleSymbols[i % sparkleSymbols.length];
+        
+        // 円形に配置
+        const angle = (Math.PI * 2 * i) / count;
+        const x = Math.cos(angle) * radius + 100;
+        const y = Math.sin(angle) * radius + 100;
+        
+        sparkle.style.cssText = `
+            left: ${x}px;
+            top: ${y}px;
+            animation-delay: ${i * 0.2}s;
+            font-size: ${12 + Math.random() * 8}px;
+        `;
+        
+        container.appendChild(sparkle);
+    }
 }
 
 /* ========================================
