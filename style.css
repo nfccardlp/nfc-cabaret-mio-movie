@@ -378,6 +378,15 @@ body {
     animation: hero-soft-zoom 15s ease-in-out infinite alternate;
 }
 
+/* ヒーロー動画スタイル 🎬 */
+.hero-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
 @keyframes hero-soft-zoom {
     0% {
         transform: scale(1);

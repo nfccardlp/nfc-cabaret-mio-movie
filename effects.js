@@ -28,6 +28,16 @@ function initOpeningAnimation() {
         createSparkleRing(sparkleRing);
     }
     
+    // ヒーロー動画の参照を取得
+    const heroVideo = document.getElementById('heroVideo');
+    
+    // 2.5秒後に動画を再生開始（オープニング終了直前）
+    setTimeout(() => {
+        if (heroVideo) {
+            heroVideo.play();
+        }
+    }, 2500);
+    
     // 3.5秒後にオープニングをフェードアウト
     setTimeout(() => {
         openingScreen.classList.add('fade-out');
